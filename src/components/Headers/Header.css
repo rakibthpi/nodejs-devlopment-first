@@ -1,0 +1,23 @@
+.mainHeader {
+    background-color: #0984e3;
+    padding: 10px 0;
+}
+
+.textHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_area ul {
+    display: flex;
+    align-items: center;
+}
+
+.menu_area ul li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 14px;
+    font-size: 20px;
+    color: #fff;
+}
