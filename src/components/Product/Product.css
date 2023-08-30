@@ -1,0 +1,16 @@
+.single_product_item img {
+    width: 100%;
+    height: auto;
+}
+
+.single_product_item {
+    flex: 0 0 31%;
+}
+
+.home_card_left {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-left: 30px;
+}
