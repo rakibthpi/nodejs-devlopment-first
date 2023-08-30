@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "../Product/Product";
+import Cart from "../Cart/Cart";
+import { addToDb } from "../../utilitis/fackdb";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -12,10 +14,10 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
-
     const handleAddToCart = (pro) => {
         let newCart = [...cart, pro];
         setCart(newCart);
+        addToDb(pro.id);
     }
 
     return (
@@ -30,16 +32,7 @@ const Home = () => {
                 }
             </div>
             <div className="home_card_right">
-                <h1>Order Summary</h1>
-                <div className="right_card">
-                    <p>Selected Items: {cart.length}</p>
-                    <p>Total Price: ${cart?.price}</p>
-                    <p>Total Shipping Charge: $5</p>
-                    <p>Tax: $114</p>
-                    <p>Grand Total: $1559</p>
-                    <button>Clear Cart</button>
-                    <button>Review Order</button>
-                </div>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );

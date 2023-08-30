@@ -1,15 +1,16 @@
 .shopArea {
-    display: flex;
-    gap: 4%;
+    display: grid;
+    grid-template-columns: 1fr 260px;
 }
 
-.home_card_left {
-    flex: 0 0 70%;
-}
 
 .home_card_right {
-    flex: 0 0 26%;
     background-color: gray;
     color: #fff;
     padding: 30px 10px 20px 30px;
+    /* required */
+    height: 100%;
+    position: sticky;
+    top: 0;
+
 }
