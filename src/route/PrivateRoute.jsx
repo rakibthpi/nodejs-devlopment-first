@@ -1,11 +1,20 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
 
-const PrivateRoute = () => {
-    return (
-        <div>
+import { useContext } from "react";
+import { UserContext } from "../providers/AuthProvider";
+import { Navigate } from "react-router-dom";
 
-        </div>
-    );
+const PrivateRoute = ({ children }) => {
+    const { user, loding } = useContext(UserContext);
+    if (loding) {
+        return <div>loding ......</div>
+    }
+    if (user) {
+
+        return children;
+    }
+    return <Navigate to="/login"></Navigate>
 };
 
 export default PrivateRoute;

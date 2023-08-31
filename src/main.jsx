@@ -10,6 +10,7 @@ import Ragister from './components/Ragister/Ragister.jsx';
 import Home from './components/Home/Home.jsx';
 import Order from './components/Order/Order.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import PrivateRoute from './route/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order",
-        element: <Order></Order>
+        element: <PrivateRoute><Order></Order></PrivateRoute>
       }
     ],
   },

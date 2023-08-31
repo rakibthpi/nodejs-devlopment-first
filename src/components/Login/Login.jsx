@@ -14,9 +14,12 @@ const Login = () => {
         console.log("rakib", email, password);
         userLogin(email, password)
             .then(result => {
+
                 const user = result.user;
                 console.log(user);
+
                 form.reset();
+
             })
             .catch(error => {
                 console.error(error);
@@ -49,7 +52,7 @@ const Login = () => {
                                 <label htmlFor="floatingPasswordCustom">Password</label>
                             </Form.Floating>
                             {
-                                user.email ? <Button variant="primary" type="submit" className="mt-3" disabled>
+                                user?.email ? <Button variant="primary" type="submit" className="mt-3" disabled>
                                     Submit
                                 </Button> : <Button variant="primary" type="submit" className="mt-3">
                                     Submit
