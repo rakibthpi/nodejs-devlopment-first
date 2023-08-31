@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
+import { removeCart } from "../../utilitis/fackdb";
 import "./Cart.css"
 
 const Cart = ({ cart }) => {
@@ -7,6 +8,9 @@ const Cart = ({ cart }) => {
     // console.log(cart);
     for (const single of cart) {
         total = total + single.price;
+    }
+    const handleClear = () => {
+        removeCart()
     }
     // console.log(total);
 
@@ -21,8 +25,8 @@ const Cart = ({ cart }) => {
                     <p>Total Shipping Charge: $5</p>
                     <p>Tax: $114</p>
                     <p>Grand Total: $1559</p>
-                    <button>Clear Cart</button>
-                    <button>Review Order</button>
+                    <button onClick={() => { handleClear() }}>Clear Cart</button>
+                    <button >Review Order</button>
                 </div>
             </div>
         </div>

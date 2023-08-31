@@ -20,6 +20,7 @@ const Home = () => {
         addToDb(pro.id);
     }
 
+
     return (
         <div className="shopArea">
             <div className="home_card_left">
