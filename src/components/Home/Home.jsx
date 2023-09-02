@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDb } from "../../utilitis/fackdb";
+import { addToDb, getItemCart } from "../../utilitis/fackdb";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -13,6 +13,11 @@ const Home = () => {
         fetch('products.json')
             .then(res => res.json())
             .then(data => setProducts(data))
+    }, [])
+
+    useEffect(() => {
+        const dataLocastorage = getItemCart();
+        console.log(dataLocastorage);
     }, [])
     const handleAddToCart = (pro) => {
         let newCart = [...cart, pro];
