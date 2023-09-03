@@ -7,14 +7,14 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
     const { user, loding } = useContext(UserContext);
+    console.log(loding);
     if (loding) {
         return <div>loding ......</div>
     }
     if (user) {
-
         return children;
     }
-    return <Navigate to="/login"></Navigate>
+    return <Navigate to="/login" replace={true}></Navigate>
 };
 
 export default PrivateRoute;

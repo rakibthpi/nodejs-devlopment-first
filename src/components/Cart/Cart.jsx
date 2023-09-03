@@ -20,7 +20,7 @@ const Cart = ({ cart, removeCartData }) => {
     return (
         <div className="positionstyky">
             <div className="positionstyky_sub">
-                <h1>Order Summary</h1>
+                <h1>Sharmin please, Order now</h1>
                 <div className="right_card">
                     <p>Selected Items: {totalQuantity}</p>
                     <p>Total Price: ${totalPrice}</p>

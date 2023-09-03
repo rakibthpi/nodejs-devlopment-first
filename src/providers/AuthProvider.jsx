@@ -18,21 +18,22 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     const logOut = () => {
-        signOut(auth);
+        return signOut(auth);
     }
 
     useEffect(() => {
-        const unSuscribe = onAuthStateChanged(auth, currentUser => {
+        const unSuscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser)
-                setLoding(false);
+
             }
+            setLoding(false);
         })
         return () => {
-            unSuscribe();
+            unSuscribe()
         };
 
-    }, [])
+    }, []);
 
     const userifo = { user, newUserCreate, userLogin, logOut, loding }
 
