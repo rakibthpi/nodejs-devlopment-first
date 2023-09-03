@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDb, getItemCart } from "../../utilitis/fackdb";
+import { addToDb, getItemCart, removeCart, removeSingleItem } from "../../utilitis/fackdb";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -17,13 +17,50 @@ const Home = () => {
 
     useEffect(() => {
         const dataLocastorage = getItemCart();
-        console.log(dataLocastorage);
-    }, [])
-    const handleAddToCart = (pro) => {
-        let newCart = [...cart, pro];
+        const saveProduct = [];
+        for (const id in dataLocastorage) {
+            const addedProduct = products.find(product => product.id == id);
+            if (addedProduct) {
+                let quantity = dataLocastorage[id];
+                addedProduct.quantity = quantity;
+                saveProduct.push(addedProduct);
+            }
+        }
+
+        setCart(saveProduct);
+
+    }, [products]);
+
+    const handleAddToCart = (product) => {
+        let newCart = [];
+        // let newCart = [...cart, pro];
+        let axists = cart.find(pd => pd.id === product.id)
+        console.log(product)
+        if (!axists) {
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+        else {
+            axists.quantity = axists.quantity + 1;
+            const remaining = cart.filter(pd => pd.id !== product.id)
+            newCart = [...remaining, axists];
+        }
         setCart(newCart);
-        addToDb(pro.id);
+        addToDb(product.id);
     }
+    let newCart = [];
+    const removeOneData = (id) => {
+        const removeSingeData = cart.filter(pd => pd.id !== id)
+        newCart = removeSingeData;
+        setCart(newCart);
+        removeSingleItem(id);
+    }
+    const removeCartData = () => {
+        const locastorageResetData = []
+        setCart(locastorageResetData);
+        removeCart()
+    }
+
 
 
     return (
@@ -34,11 +71,12 @@ const Home = () => {
                         key={product.id}
                         product={product}
                         handleAddToCart={handleAddToCart}
+                        removeOneData={removeOneData}
                     ></Product>)
                 }
             </div>
             <div className="home_card_right">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} removeCartData={removeCartData}></Cart>
             </div>
         </div>
     );

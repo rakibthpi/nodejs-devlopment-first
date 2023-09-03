@@ -1,5 +1,4 @@
 
-
 const addToDb = (id) => {
     let shopingCart = getItemCart();
     const quantity = shopingCart[id];
