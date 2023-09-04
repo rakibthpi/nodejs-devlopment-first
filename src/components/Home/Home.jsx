@@ -26,16 +26,13 @@ const Home = () => {
                 saveProduct.push(addedProduct);
             }
         }
-
         setCart(saveProduct);
-
     }, [products]);
 
     const handleAddToCart = (product) => {
         let newCart = [];
         // let newCart = [...cart, pro];
-        let axists = cart.find(pd => pd.id === product.id)
-        console.log(product)
+        let axists = cart.find(pd => pd.id === product.id);
         if (!axists) {
             product.quantity = 1;
             newCart = [...cart, product];
@@ -76,7 +73,9 @@ const Home = () => {
                 }
             </div>
             <div className="home_card_right">
-                <Cart cart={cart} removeCartData={removeCartData}></Cart>
+                <Cart cart={cart} removeCartData={removeCartData}>
+                    Home
+                </Cart>
             </div>
         </div>
     );

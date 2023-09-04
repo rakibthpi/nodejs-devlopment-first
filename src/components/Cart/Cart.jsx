@@ -2,7 +2,7 @@
 // import React from 'react';
 import "./Cart.css"
 
-const Cart = ({ cart, removeCartData }) => {
+const Cart = ({ cart, removeCartData, children }) => {
     const remainder = removeCartData;
     let totalPrice = 0;
     let totalQuantity = 0;
@@ -20,7 +20,7 @@ const Cart = ({ cart, removeCartData }) => {
     return (
         <div className="positionstyky">
             <div className="positionstyky_sub">
-                <h1>Sharmin please, Order now</h1>
+                <h1>Order Summary</h1>
                 <div className="right_card">
                     <p>Selected Items: {totalQuantity}</p>
                     <p>Total Price: ${totalPrice}</p>
@@ -28,7 +28,7 @@ const Cart = ({ cart, removeCartData }) => {
                     <p>Tax: ${totalTxt}</p>
                     <p>Grand Total: ${grandTotal}</p>
                     <button onClick={() => remainder()}>Clear Cart</button>
-                    <button >Review Order</button>
+                    <button >{children}</button>
                 </div>
             </div>
         </div>

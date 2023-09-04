@@ -1,0 +1,13 @@
+.orders_main {
+    display: flex;
+    padding: 20px 30px;
+    gap: 3%;
+}
+
+.leftOrder {
+    flex: 0 0 70%;
+}
+
+.rightOder {
+    flex: 0 0 27%;
+}

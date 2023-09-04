@@ -10,6 +10,7 @@ import Home from './components/Home/Home.jsx';
 import Order from './components/Order/Order.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoute from './route/PrivateRoute.jsx';
+import cartProductsLoader from './loaders/cartProductsLoader';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/order",
         element: <PrivateRoute><Order></Order></PrivateRoute>,
-        loader: () => fetch('products.json')
+        loader: cartProductsLoader,
 
       }
     ],

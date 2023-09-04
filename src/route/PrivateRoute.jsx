@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
     const { user, loding } = useContext(UserContext);
-    console.log(loding);
     if (loding) {
         return <div>loding ......</div>
     }

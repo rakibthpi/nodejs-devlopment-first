@@ -29,7 +29,6 @@ const getItemCart = () => {
     if (storedCart) {
         shopingCart = JSON.parse(storedCart);
     }
-
     return shopingCart;
 }
 
