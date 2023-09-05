@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
 import './Order.css';
-import { Link, useLoaderData } from "react-router-dom";
-import { removeCart } from '../../utilitis/fackdb';
+import { useLoaderData } from "react-router-dom";
+import { removeCart, removeSingleItem } from '../../utilitis/fackdb';
+import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Order = () => {
     const products = useLoaderData();
@@ -15,11 +16,22 @@ const Order = () => {
         setCart(locastorageResetData);
         removeCart()
     }
+    const handleProductDelete = (id) => {
+        const addedProduct = cart.filter(pd => pd.id !== id)
+        setCart(addedProduct);
+        removeSingleItem(id)
+    }
 
     return (
         <div className="orders_main">
             <div className='leftOrder'>
-                <h2>review product</h2>
+                {
+                    cart.map(pd => <ReviewItem
+                        key={pd.id}
+                        products={pd}
+                        handleProductDelete={handleProductDelete}
+                    ></ReviewItem>)
+                }
             </div>
             <div className='rightOder'>
                 <Cart cart={cart} removeCartData={removeCartData}>Order</Cart>
