@@ -1,17 +1,19 @@
 // import React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../assets/Logo.svg";
 import './Header.css';
 import { useContext } from "react";
 import { UserContext } from "../../providers/AuthProvider";
 
 const Headers = () => {
+    const navigate = useNavigate();
     const { logOut, user } = useContext(UserContext);
     const handleLogOut = () => {
         logOut()
             .then(result => {
                 console.log(result);
+                navigate('/login')
             })
             .catch(error => {
                 console.log(error);
@@ -28,8 +30,11 @@ const Headers = () => {
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/order">Order</Link></li>
-                            <li> {user ? <Link to="/login" onClick={() => { handleLogOut() }}>logOut </Link> : <Link to="/login">Login </Link>}</li>
-                            <li></li>
+                            <li>
+                                {
+                                    user ? <Link onClick={() => { handleLogOut() }}>logOut </Link> : <Link to='/login'>login </Link>
+                                }
+                            </li>
                             <li><Link to="/ragister">Ragister</Link></li>
                         </ul>
                     </div>

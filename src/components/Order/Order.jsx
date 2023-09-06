@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
 import './Order.css';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { removeCart, removeSingleItem } from '../../utilitis/fackdb';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
@@ -34,7 +34,9 @@ const Order = () => {
                 }
             </div>
             <div className='rightOder'>
-                <Cart cart={cart} removeCartData={removeCartData}>Order</Cart>
+                <Cart cart={cart} removeCartData={removeCartData}>
+                    <Link to="/checkout">CheckOut</Link>
+                </Cart>
             </div>
         </div>
     );

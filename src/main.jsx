@@ -11,6 +11,7 @@ import Order from './components/Order/Order.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoute from './route/PrivateRoute.jsx';
 import cartProductsLoader from './loaders/cartProductsLoader';
+import CheckOut from './components/CheckOut/CheckOut';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: '/checkout',
+        element: <CheckOut></CheckOut>
       },
       {
         path: "/order",

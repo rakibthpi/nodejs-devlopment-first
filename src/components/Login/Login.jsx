@@ -3,9 +3,15 @@
 import { useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { UserContext } from "../../providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { user, userLogin } = useContext(UserContext);
+    const location = useLocation();
+    const from = location?.state?.from.pathname || '/';
+    console.log(location)
+    console.log(from)
+    const { userLogin } = useContext(UserContext);
+    const navigate = useNavigate();
     const handleLogin = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -17,7 +23,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-
+                navigate(from);
             })
             .catch(error => {
                 console.error(error);
@@ -48,13 +54,10 @@ const Login = () => {
                                 />
                                 <label htmlFor="floatingPasswordCustom">Password</label>
                             </Form.Floating>
-                            {
-                                user?.email ? <Button variant="primary" type="submit" className="mt-3" disabled>
-                                    Submit
-                                </Button> : <Button variant="primary" type="submit" className="mt-3">
-                                    Submit
-                                </Button>
-                            }
+
+                            <Button variant="primary" type="submit" className="mt-3">
+                                Submit
+                            </Button>
 
                         </Form>
                     </Col>

@@ -4,6 +4,7 @@ import "./Home.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
 import { addToDb, getItemCart, removeCart, removeSingleItem } from "../../utilitis/fackdb";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -74,7 +75,9 @@ const Home = () => {
             </div>
             <div className="home_card_right">
                 <Cart cart={cart} removeCartData={removeCartData}>
-                    Home
+                    <Link to="/order">
+                        Order Now
+                    </Link>
                 </Cart>
             </div>
         </div>
